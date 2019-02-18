@@ -1,0 +1,8 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="app_name">TwitterSample</string>
+    <string name="login_failed">Login Failed .Please Try again.</string>
+    <string name="consumer_key">PyzVh7CpHFgm7X4Oi49VIFtI3</string>
+    <string name="consumer_secret">R9aQ3UDmoqKfzbYMPAyiHsIXpi3HrGdFR8f6Pl92p9lcKKD6LT</string>
+    <string name="send_message">Enter Message</string>
+    <string name="retry">retry</string>
+</resources>

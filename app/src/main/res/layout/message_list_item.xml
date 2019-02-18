@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.example.twittersample.directMessage.MessageListModel" />
+
+        <variable
+            name="handlers"
+            type="com.example.twittersample.directMessage.BaseHandler" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/message_item_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v)->handlers.onClick(v,obj)}">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/img_size"
+            android:layout_height="@dimen/img_size"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{obj.user.get400x400ProfileImageURL().toString()}" />
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@{obj.user.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@{obj.message.getText()}"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv" />
+
+
+        <View
+            android:id="@+id/view_sep"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/textView2" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

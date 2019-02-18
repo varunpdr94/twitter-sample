@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="obj"
+            type="com.example.twittersample.directMessage.MessageListModel" />
+
+        <variable
+            name="handlers"
+            type="com.example.twittersample.directMessage.BaseHandler"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/tw__solid_white"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/header_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{obj.headerMessageText}"
+            android:textColor="@color/tw__blue_pressed"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Message : " />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:background="@color/tw__solid_white"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/write_message_et"
+            app:layout_constraintTop_toBottomOf="@id/header_tv" />
+
+        <EditText
+            android:id="@+id/write_message_et"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/holo_orange_light"
+            android:fadeScrollbars="false"
+            android:hint="@string/send_message"
+            android:maxLines="3"
+            android:paddingLeft="@dimen/margin_16dp"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/send_button"
+            tools:text="2142141424141412141414124" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/send_button"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:background="@android:color/white"
+            android:onClick="@{(v) -> handlers.onClick(writeMessageEt, obj)}"
+            android:paddingLeft="8dp"
+            android:paddingTop="15dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/ic_send_message"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
